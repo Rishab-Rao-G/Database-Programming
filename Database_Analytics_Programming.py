@@ -49,7 +49,7 @@ zip4 = zipfile.ZipFile('JPvideos.csv.zip')
 zip4.extractall()
 
 
-# In[6]:
+# In[4]:
 
 
 #Creating a JSON data file for downloaded USvideos dataset.
@@ -62,13 +62,7 @@ with open("USvideos.csv", "r", encoding="ISO-8859-1") as f:
         dataUS.append({"VideoID":row[0],"TrendingDate":row[1],"Title":row[2],"ChannelTitle":row[3],"CategoryID":row[4],"PublishedID":row[5],"Tags":row[6],"Views":row[7],"Likes":row[8],"Dislikes":row[9],"CommentCount":row[10],"ThumbnailLink":row[11],"CommentsDisabled":row[12],"Ratings":row[13],"VideoError":row[14],"Desciption":row[15]})
 
 
-# In[7]:
-
-
-dataUS
-
-
-# In[8]:
+# In[5]:
 
 
 #Creating a JSON data file for downloaded INvideos dataset.
@@ -84,12 +78,6 @@ with open("INvideos.csv", "r", encoding="ISO-8859-1") as f:
 # In[9]:
 
 
-dataIN
-
-
-# In[10]:
-
-
 #Creating a JSON data file for downloaded RUvideos dataset.
 
 with open("RUvideos.csv", "r", encoding="ISO-8859-1") as f:
@@ -102,13 +90,6 @@ with open("RUvideos.csv", "r", encoding="ISO-8859-1") as f:
 
 # In[11]:
 
-
-dataRU
-
-
-# In[12]:
-
-
 #Creating a JSON data file for downloaded JPvideos dataset.
 
 with open("JPvideos.csv", "r", encoding="ISO-8859-1") as f:
@@ -120,33 +101,6 @@ with open("JPvideos.csv", "r", encoding="ISO-8859-1") as f:
 
 
 # In[13]:
-
-
-dataJP
-
-
-# In[14]:
-
-
-len(dataUS)
-
-
-# In[15]:
-
-
-len(dataIN)
-
-
-# In[16]:
-
-
-len(dataRU)
-
-
-# In[17]:
-
-
-len(dataJP)
 
 
 # ## __Connecting to MondoDB and populating the semi-structured data.__
@@ -269,30 +223,6 @@ jp_df1 = pd.DataFrame(jp_df, columns = ["TrendingDate", "Views", "Likes", "Disli
 # In[80]:
 
 
-us_df1
-
-
-# In[42]:
-
-
-in_df1
-
-
-# In[44]:
-
-
-ru_df1
-
-
-# In[46]:
-
-
-jp_df1
-
-
-# In[82]:
-
-
 #Extracting the Year and Month column from TrendingDate.
 
 us_df1['Year'] = pd.to_datetime(us_df1['TrendingDate'], format='%y.%d.%m').dt.strftime('%B %Y')
@@ -312,36 +242,6 @@ in_df2 = in_df1[~in_df1.Year.str.contains("2017")]
 
 
 # In[88]:
-
-
-us_df2
-
-
-# In[92]:
-
-
-jp_df1
-
-
-# In[91]:
-
-
-ru_df1
-
-
-# In[95]:
-
-
-ru_df2
-
-
-# In[98]:
-
-
-in_df2
-
-
-# In[250]:
 
 
 #Adding the Country column in each dataset with respective country names. 
